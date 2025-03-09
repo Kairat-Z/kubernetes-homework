@@ -1,0 +1,29 @@
+dp:
+  name: nginx
+  tag: "1.0"
+  image: gcr.io/google-samples/hello-app
+  cPort: 8080
+  replicas: 3
+
+dp2:
+  name: nginx2
+  tag: "2.0"
+  image: gcr.io/google-samples/hello-app
+  cPort: 8080
+  replicas: 3
+
+svc:
+  name: my-service
+  port: 80
+  tPort: 8080
+
+svc2:
+  name: my-service2
+  port: 80
+  tPort: 8080
+
+ing:
+  name: kairat-ingress
+  mPath: /
+  sPath: /hello
+  port: 80
