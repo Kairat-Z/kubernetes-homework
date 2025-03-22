@@ -1,0 +1,14 @@
+deployment:
+  dpName: nginx-deployment
+  dpImage: nginx
+  dpTag: 1.14.2
+  containerPort: 80
+  numberOfReplicas: 1
+  claimName: task-pv-claim
+  mountPath: "/usr/share/nginx/html"
+
+pvc: 
+  name: task-pv-claim
+  accessMode: - ReadWriteOnce
+  capacity: 10Gi
+  storageClassName: standard

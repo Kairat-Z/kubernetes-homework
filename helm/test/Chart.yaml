@@ -1,0 +1,6 @@
+apiVersion: v2
+name: hello   # <-- This should match your intended chart name
+description: A simple Helm chart
+type: application
+version: 0.1.0
+appVersion: "1.0"

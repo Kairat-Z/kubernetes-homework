@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment.dpName }}
+  labels:
+    app: nginx
+spec:
+  replicas: {{ .Values.deployment.numberOfReplicas }}
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      volumes:
+      - name: task-pv-storage
+        persistentVolumeClaim:
+          claimName: {{ .Values.deployment.claimName }}
+      containers:
+      - name: nginx
+        image: {{ .Values.deployment.dpImage }}:{{ .Values.deployment.dpTag }}
+        ports:
+        - containerPort: {{ .Values.deployment.dpContainerPort }}
+        volumeMounts:
+        - name: task-pv-storage
+          mountPath: {{ .Values.deployment.mountPath }}

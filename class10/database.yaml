@@ -1,0 +1,9 @@
+apiVersion: myorg.com/v1
+kind: Database
+metadata:
+  name: my-db-instance
+spec:
+  engine: mysql
+  storageSize: "20Gi"
+  replicas: 2
+  version: "8.0"
